@@ -10,10 +10,8 @@ export class FilmsService {
     const film = await this.filmsRepository.findById();
     const needFilm = await film.find((res) => res.id === id);
     const needSchedule = needFilm.schedule;
-    const total: number = needSchedule.length;
     const needArr = {
       items: needSchedule,
-      total: total
     };
 
     return needArr;
@@ -21,8 +19,11 @@ export class FilmsService {
 
   async findAll() {
     const film = await this.filmsRepository.findAll();
+    const total: number = film.length;
+
     const needArr = {
       items: film,
+      total
     };
 
     return needArr;
