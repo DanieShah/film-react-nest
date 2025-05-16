@@ -13,7 +13,7 @@ export class FilmsService {
     const total: number = needSchedule.length;
     const needArr = {
       items: needSchedule,
-      total
+      total: total
     };
 
     return needArr;
