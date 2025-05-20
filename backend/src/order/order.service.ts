@@ -19,11 +19,9 @@ export class OrderService {
     });
 
     const scheduleBase = filmBase.schedule.find(el => {
-      console.log(el.id + ' ' +  tickets[0].session);
       return el.id === tickets[0].session;
     }).taken;
 
-    console.log(scheduleBase);
     const isSeatTaken = seats.some(seat => scheduleBase.includes(seat));
 
     if (isSeatTaken) {
