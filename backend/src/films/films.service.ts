@@ -1,10 +1,9 @@
 import { Injectable } from '@nestjs/common';
-import { FilmsRepository } from 'src/repository/films.repository/films.repository';
+import { AppRepository } from 'src/repository/app.repository/app.repository';
 
 @Injectable()
 export class FilmsService {
-  //   constructor(@InjectModel('Film') private readonly filmModel: Model<IFilm>) {}
-  constructor(private readonly filmsRepository: FilmsRepository) {}
+  constructor(private readonly filmsRepository: AppRepository) {}
 
   async findById(id: string) {
     const film = await this.filmsRepository.findById();
@@ -25,7 +24,7 @@ export class FilmsService {
 
     const needArr = {
       items: film,
-      total
+      total,
     };
 
     return needArr;
