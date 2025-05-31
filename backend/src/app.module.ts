@@ -36,7 +36,7 @@ import { AppRepository } from './repository/app.repository/app.repository';
     OrderModule,
   ],
   controllers: [],
-  providers: [configProvider, AppRepository],
+  providers: [AppRepository],
 })
 export class AppModule {}
 
