@@ -10,6 +10,8 @@ import { FilmsModule } from './films/films.module';
 import { OrderModule } from './order/order.module';
 import { AppRepository } from './repository/app.repository/app.repository';
 
+
+
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -21,13 +23,13 @@ import { AppRepository } from './repository/app.repository/app.repository';
     }),
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'localhost',
+      host: process.env.DATABASE_HOST,
       port: 5432,
       username: process.env.DATABASE_USERNAME,
       password: process.env.DATABASE_PASSWORD, 
-      database: 'nest_project',
+      database: process.env.DATABASE,
       entities: [Films, Schedules],
-      synchronize: false,
+      synchronize: false, 
     }),
     TypeOrmModule.forFeature([Films, Schedules]),
     FilmsModule,
@@ -37,3 +39,5 @@ import { AppRepository } from './repository/app.repository/app.repository';
   providers: [configProvider, AppRepository],
 })
 export class AppModule {}
+
+console.log();
