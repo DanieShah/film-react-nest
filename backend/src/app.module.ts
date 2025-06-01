@@ -10,8 +10,6 @@ import { FilmsModule } from './films/films.module';
 import { OrderModule } from './order/order.module';
 import { AppRepository } from './repository/app.repository/app.repository';
 
-
-
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -26,10 +24,10 @@ import { AppRepository } from './repository/app.repository/app.repository';
       host: process.env.DATABASE_HOST,
       port: Number(process.env.DATABASE_PORT),
       username: process.env.DATABASE_USERNAME,
-      password: process.env.DATABASE_PASSWORD, 
+      password: process.env.DATABASE_PASSWORD,
       database: process.env.DATABASE,
       entities: [Films, Schedules],
-      synchronize: false, 
+      synchronize: false,
     }),
     TypeOrmModule.forFeature([Films, Schedules]),
     FilmsModule,
