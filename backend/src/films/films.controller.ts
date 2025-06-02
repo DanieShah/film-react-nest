@@ -1,4 +1,4 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Controller, Get, HttpException, HttpStatus, Logger, Param } from '@nestjs/common';
 import { FilmsService } from './films.service';
 
 @Controller('films')
@@ -7,7 +7,13 @@ export class FilmsController {
 
   @Get()
   async findAll() {
-    return this.filmsService.findAll();
+    try {
+      return this.filmsService.findAll();
+    } catch(error) {
+      const errorMessage = 'Ошибка при поиске фильмов: ' + error.message;
+      Logger.error(errorMessage, error.stack); 
+      throw new HttpException(errorMessage, HttpStatus.INTERNAL_SERVER_ERROR);  
+    }
   }
 
   @Get(':id/schedule')
