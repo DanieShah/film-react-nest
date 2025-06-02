@@ -14,11 +14,16 @@ export class AppRepository {
   ) {}
 
   async findAll() {
-    return await this.filmsRepository.find({
-      relations: {
-        schedule: true,
-      },
-    });
+    try {
+      return await this.filmsRepository.find({
+        relations: {
+          schedule: true,
+        },
+      });
+    } catch (error) {
+      const errorMessage = 'Ошибка при поиске фильмов: ' + error.message;
+      throw new Error(errorMessage);
+    }
   }
 
   async findById() {
