@@ -10,8 +10,7 @@ export class FilmsController {
     try {
       // return this.filmsService.findAll();
       return {
-        driver: process.env.DATABASE_DRIVER,
-        base: process.env.DATABASE_BASE
+        prov: process.env.DATABASE_BASE
       }
     } catch(error) {
       const errorMessage = 'Ошибка при поиске фильмов: ' + error.message;
