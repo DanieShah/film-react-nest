@@ -15,7 +15,7 @@ export class FilmsController {
         username: process.env.DATABASE_USERNAME,
         password: process.env.DATABASE_PASSWORD,
         basename: process.env.DATABASE_NAME,
-        host: process.env.DATABASE_HOST,
+        host: process.env.DATABASE_URL,
       }
     } catch(error) {
       const errorMessage = 'Ошибка при поиске фильмов: ' + error.message;

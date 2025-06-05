@@ -3,7 +3,7 @@ import { AppRepository } from 'src/repository/app.repository/app.repository';
 
 @Injectable()
 export class FilmsService {
-  constructor(private readonly filmsRepository: AppRepository) {}
+  constructor(private readonly filmsRepository: AppRepository) {} 
 
   async findById(id: string) {
     try {
