@@ -14,6 +14,7 @@ import { AppRepository } from './repository/app.repository/app.repository';
     ConfigModule.forRoot({
       isGlobal: true,
       cache: true,
+      envFilePath: ['.env', '.env.example'],
     }),
     ServeStaticModule.forRoot({
       rootPath: path.join(__dirname, '..', 'public'),
