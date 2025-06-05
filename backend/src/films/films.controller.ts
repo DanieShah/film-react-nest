@@ -10,12 +10,12 @@ export class FilmsController {
     try {
       // return this.filmsService.findAll();
       return {
-        driver: process.env.DATABASE_USERNAME,
-        port: process.env.DATABASE_PORT,
-        username: process.env.DATABASE_USERNAME,
-        password: process.env.DATABASE_PASSWORD,
-        basename: process.env.DATABASE_BASENAME,
-        host: process.env.DATABASE_HOST,
+        driver: process.env.DATABASE_DRIVER,
+        port: process.env.PORT,
+        username: process.env.USERNAME,
+        password: process.env.PASSWORD,
+        basename: process.env.BASENAME,
+        host: process.env.HOST,
       }
     } catch(error) {
       const errorMessage = 'Ошибка при поиске фильмов: ' + error.message;
