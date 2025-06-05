@@ -8,7 +8,11 @@ export class FilmsController {
   @Get()
   async findAll() {
     try {
-      return this.filmsService.findAll();
+      // return this.filmsService.findAll();
+      return {
+        driver: process.env.DATABASE_DRIVER,
+        base: process.env.DATABASE
+      }
     } catch(error) {
       const errorMessage = 'Ошибка при поиске фильмов: ' + error.message;
       Logger.error(errorMessage, error.stack); 

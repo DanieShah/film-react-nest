@@ -6,30 +6,35 @@ export class FilmsService {
   constructor(private readonly filmsRepository: AppRepository) {}
 
   async findById(id: string) {
-    const film = await this.filmsRepository.findById();
-    const needFilm = await film.find((res) => res.id === id);
-    const needSchedule = needFilm.schedule;
-    const total: number = needSchedule.length;
-    const needArr = {
-      items: needSchedule,
-      total,
-    };
-
-    // return needArr;
-    return {
-      serviceAnswer: 'Проверка'
+    try {
+      const film = await this.filmsRepository.findById();
+      const needFilm = await film.find((res) => res.id === id);
+      const needSchedule = needFilm.schedule;
+      const total: number = needSchedule.length;
+      const needArr = {
+        items: needSchedule,
+        total,
+      };
+  
+      return needArr;
+    } catch (error) {
+      throw new Error('Произошла ошибка ' + error.message);
     }
   }
 
   async findAll() {
-    const film = await this.filmsRepository.findAll();
-    const total: number = film.length;
-
-    const needArr = {
-      items: film,
-      total,
-    };
-
-    return needArr;
+    try {
+      const film = await this.filmsRepository.findAll();
+      const total: number = film.length;
+  
+      const needArr = {
+        items: film,
+        total,
+      };
+  
+      return needArr;
+    } catch (error) {
+      throw new Error('Произошла ошибка ' + error.message);
+    }
   }
 }
