@@ -29,8 +29,6 @@ export class OrderService {
     try {
       await this.filmsRepository.create(tickets[0], seats);
     } catch (error) {
-      console.log(tickets[0]);
-      console.log('Произошла ошибка ' + error.message);
       throw new Error('Произошла ошибка ' + error.message); 
     }
     return result;

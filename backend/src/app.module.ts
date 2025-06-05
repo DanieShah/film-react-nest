@@ -9,8 +9,6 @@ import { FilmsModule } from './films/films.module';
 import { OrderModule } from './order/order.module';
 import { AppRepository } from './repository/app.repository/app.repository';
 
-console.log(process.env.DATABASE_NAME)
-
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -39,4 +37,5 @@ console.log(process.env.DATABASE_NAME)
   controllers: [],
   providers: [AppRepository],
 })
+
 export class AppModule {}
