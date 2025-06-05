@@ -1,7 +1,7 @@
--- CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
--- create database prac
---     with owner student;
+create database nest_project
+    with owner student;
 
 create table public.films
 (
