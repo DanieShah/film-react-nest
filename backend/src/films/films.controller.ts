@@ -8,15 +8,7 @@ export class FilmsController {
   @Get()
   async findAll() {
     try {
-      // return this.filmsService.findAll();
-      return {
-        driver: process.env.DATABASE_DRIVER,
-        port: process.env.DATABASE_PORT,
-        username: process.env.DATABASE_USERNAME,
-        password: process.env.DATABASE_PASSWORD,
-        basename: process.env.DATABASE_NAME,
-        host: process.env.DATABASE_URL,
-      }
+      return this.filmsService.findAll();
     } catch(error) {
       const errorMessage = 'Ошибка при поиске фильмов: ' + error.message;
       Logger.error(errorMessage, error.stack); 
