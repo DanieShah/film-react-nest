@@ -37,5 +37,3 @@ import { AppRepository } from './repository/app.repository/app.repository';
   providers: [AppRepository],
 })
 export class AppModule {}
-
-console.log();
