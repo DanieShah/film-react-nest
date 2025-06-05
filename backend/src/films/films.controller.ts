@@ -10,7 +10,7 @@ export class FilmsController {
     try {
       // return this.filmsService.findAll();
       return {
-        prov: process.env.DATABASE_PROV
+        prov: process.env.DATABASE_USERNAME
       }
     } catch(error) {
       const errorMessage = 'Ошибка при поиске фильмов: ' + error.message;
