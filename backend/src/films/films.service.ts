@@ -15,7 +15,10 @@ export class FilmsService {
       total,
     };
 
-    return needArr;
+    // return needArr;
+    return {
+      serviceAnswer: 'Проверка'
+    }
   }
 
   async findAll() {

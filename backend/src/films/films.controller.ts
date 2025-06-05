@@ -8,10 +8,7 @@ export class FilmsController {
   @Get()
   async findAll() {
     try {
-      // return this.filmsService.findAll();
-      return {
-        answer: 'Проверка',
-      }
+      return this.filmsService.findAll();
     } catch(error) {
       const errorMessage = 'Ошибка при поиске фильмов: ' + error.message;
       Logger.error(errorMessage, error.stack); 
