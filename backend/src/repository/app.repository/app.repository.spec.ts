@@ -7,7 +7,10 @@ describe('AppRepository', () => {
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       providers: [AppRepository],
-    }).compile();
+    })
+    .overrideProvider(AppRepository)
+    .useValue({})
+    .compile();
 
     provider = module.get<AppRepository>(AppRepository);
   });

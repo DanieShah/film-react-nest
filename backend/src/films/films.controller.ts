@@ -1,4 +1,11 @@
-import { Controller, Get, HttpException, HttpStatus, Logger, Param } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  HttpException,
+  HttpStatus,
+  Logger,
+  Param,
+} from '@nestjs/common';
 import { FilmsService } from './films.service';
 
 @Controller('films')
@@ -9,10 +16,10 @@ export class FilmsController {
   async findAll() {
     try {
       return this.filmsService.findAll();
-    } catch(error) {
+    } catch (error) {
       const errorMessage = 'Ошибка при поиске фильмов: ' + error.message;
-      Logger.error(errorMessage, error.stack); 
-      throw new HttpException(errorMessage, HttpStatus.INTERNAL_SERVER_ERROR);  
+      Logger.error(errorMessage, error.stack);
+      throw new HttpException(errorMessage, HttpStatus.INTERNAL_SERVER_ERROR);
     }
   }
 

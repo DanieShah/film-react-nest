@@ -1,7 +1,7 @@
 import { HttpException, HttpStatus, Injectable, Logger } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Films } from 'src/films/films.entity';
-import { Schedules } from 'src/films/schedules.entity';
+import { Films } from '../../films/films.entity';
+import { Schedules } from '../../films/schedules.entity';
 import { Repository } from 'typeorm';
 
 @Injectable()
@@ -22,7 +22,7 @@ export class AppRepository {
       });
     } catch (error) {
       const errorMessage = 'Ошибка при поиске фильмов: ' + error.message;
-      Logger.error(errorMessage, error.stack); 
+      Logger.error(errorMessage, error.stack);
       throw new HttpException(errorMessage, HttpStatus.INTERNAL_SERVER_ERROR);
     }
   }

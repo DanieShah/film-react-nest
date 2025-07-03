@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import MakeOrderDto from './dto/order.dto';
-import { AppRepository } from 'src/repository/app.repository/app.repository';
+import { AppRepository } from '../repository/app.repository/app.repository';
 
 @Injectable()
 export class OrderService {
@@ -29,7 +29,7 @@ export class OrderService {
     try {
       await this.filmsRepository.create(tickets[0], seats);
     } catch (error) {
-      throw new Error('Произошла ошибка ' + error.message); 
+      throw new Error('Произошла ошибка ' + error.message);
     }
     return result;
   }

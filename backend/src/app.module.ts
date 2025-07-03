@@ -8,6 +8,16 @@ import { Schedules } from './films/schedules.entity';
 import { FilmsModule } from './films/films.module';
 import { OrderModule } from './order/order.module';
 import { AppRepository } from './repository/app.repository/app.repository';
+import { DevLogger } from './logger/dev.logger/dev.logger';
+
+console.log({
+      type: 'postgres',
+      host: process.env.DATABASE_HOST,
+      port: process.env.DATABASE_PORT,
+      username: process.env.DATABASE_USERNAME,
+      password: process.env.DATABASE_PASSWORD,
+      database: process.env.DATABASE_NAME,
+})
 
 @Module({
   imports: [
@@ -27,7 +37,7 @@ import { AppRepository } from './repository/app.repository/app.repository';
       password: process.env.DATABASE_PASSWORD,
       database: process.env.DATABASE_NAME,
       entities: [Films, Schedules],
-      migrations: [`${__dirname}/**/database/migrations/**/*{.ts,.js}`],  
+      migrations: [`${__dirname}/**/database/migrations/**/*{.ts,.js}`],
       synchronize: false,
     }),
     TypeOrmModule.forFeature([Films, Schedules]),
@@ -35,7 +45,6 @@ import { AppRepository } from './repository/app.repository/app.repository';
     OrderModule,
   ],
   controllers: [],
-  providers: [AppRepository],
+  providers: [AppRepository, DevLogger],
 })
-
 export class AppModule {}

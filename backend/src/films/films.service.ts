@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
-import { AppRepository } from 'src/repository/app.repository/app.repository';
+import { AppRepository } from '../repository/app.repository/app.repository';
 
 @Injectable()
 export class FilmsService {
-  constructor(private readonly filmsRepository: AppRepository) {} 
+  constructor(private readonly filmsRepository: AppRepository) {}
 
   async findById(id: string) {
     try {
@@ -15,7 +15,7 @@ export class FilmsService {
         items: needSchedule,
         total,
       };
-  
+
       return needArr;
     } catch (error) {
       throw new Error('Произошла ошибка ' + error.message);
@@ -26,12 +26,12 @@ export class FilmsService {
     try {
       const film = await this.filmsRepository.findAll();
       const total: number = film.length;
-  
+
       const needArr = {
         items: film,
         total,
       };
-  
+
       return needArr;
     } catch (error) {
       throw new Error('Произошла ошибка ' + error.message);
