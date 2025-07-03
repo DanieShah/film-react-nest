@@ -1,6 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { FilmsService } from './films.service';
-import { AppRepository } from '../repository/app.repository/app.repository';
 
 describe('FilmsService', () => {
   let service: FilmsService;
@@ -9,9 +8,9 @@ describe('FilmsService', () => {
     const module: TestingModule = await Test.createTestingModule({
       providers: [FilmsService],
     })
-    .overrideProvider(FilmsService)
-    .useValue({})
-    .compile();
+      .overrideProvider(FilmsService)
+      .useValue({})
+      .compile();
 
     service = module.get<FilmsService>(FilmsService);
   });

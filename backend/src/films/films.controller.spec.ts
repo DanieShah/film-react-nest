@@ -1,10 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { FilmsController } from './films.controller';
 import { FilmsService } from './films.service';
-import { AppRepository } from '../repository/app.repository/app.repository';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { Films } from './films.entity';
-import { Schedules } from './schedules.entity';
 
 describe('FilmsController', () => {
   let controller: FilmsController;
@@ -12,15 +8,15 @@ describe('FilmsController', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-        controllers: [FilmsController],
-        providers: [FilmsService],
+      controllers: [FilmsController],
+      providers: [FilmsService],
     })
-    .overrideProvider(FilmsService)
-    .useValue({
-      findById: jest.fn(),
-      findAll: jest.fn()
-    })
-    .compile();
+      .overrideProvider(FilmsService)
+      .useValue({
+        findById: jest.fn(),
+        findAll: jest.fn(),
+      })
+      .compile();
 
     controller = module.get<FilmsController>(FilmsController);
     service = module.get<FilmsService>(FilmsService);
@@ -38,5 +34,5 @@ describe('FilmsController', () => {
     controller.find(id);
 
     expect(service.findById).toHaveBeenCalledWith(id);
-  })
+  });
 });

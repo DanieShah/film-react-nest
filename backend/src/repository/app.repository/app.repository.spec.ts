@@ -8,9 +8,9 @@ describe('AppRepository', () => {
     const module: TestingModule = await Test.createTestingModule({
       providers: [AppRepository],
     })
-    .overrideProvider(AppRepository)
-    .useValue({})
-    .compile();
+      .overrideProvider(AppRepository)
+      .useValue({})
+      .compile();
 
     provider = module.get<AppRepository>(AppRepository);
   });
