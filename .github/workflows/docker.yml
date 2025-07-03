@@ -22,8 +22,8 @@ jobs:
       
       - name: Debug variables
         run: |
-        echo "Repository: ${{ github.repository }}"
-        echo "SHA: ${{ github.sha }}"
+          echo "Repository: ${{ github.repository }}"
+          echo "SHA: ${{ github.sha }}"
 
 
 
