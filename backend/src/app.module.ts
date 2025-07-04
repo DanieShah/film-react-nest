@@ -40,6 +40,7 @@ console.log({
       entities: [Films, Schedules],
       migrations: [`${__dirname}/**/database/migrations/**/*{.ts,.js}`],
       synchronize: false,
+      url: process.env.DATABASE_URL
     }),
     TypeOrmModule.forFeature([Films, Schedules]),
     FilmsModule,
