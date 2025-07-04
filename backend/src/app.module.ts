@@ -10,9 +10,9 @@ import { OrderModule } from './order/order.module';
 import { AppRepository } from './repository/app.repository/app.repository';
 import { DevLogger } from './logger/dev.logger/dev.logger';
 
-console.log('Здесь мы создаем ссылку ' + process.env.DATABASE_URL);
+console.log('Здесь мы создаем ссылку ' + "postgres://db:5432/nest_project");
 
-const dataBaseUrl = new URL(process.env.DATABASE_URL);
+const dataBaseUrl = new URL("postgres://db:5432/nest_project");
 
 console.log('Сылка ' + dataBaseUrl);
 
