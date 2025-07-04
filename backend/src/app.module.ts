@@ -12,15 +12,7 @@ import { DevLogger } from './logger/dev.logger/dev.logger';
 
 const dataBaseUrl = new URL(process.env.DATABASE_URL);
 
-console.log({
-      named: 'Proverka',
-      driver: 'postgres',
-      host: dataBaseUrl.host.split(':')[0],
-      port: Number(dataBaseUrl.port),
-      database: dataBaseUrl.pathname.substring(1),
-      username: process.env.DATABASE_USERNAME,
-      password: process.env.DATABASE_PASSWORD,
-})
+console.log('Сылка ' + dataBaseUrl);
 
 @Module({
   imports: [
