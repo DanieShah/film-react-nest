@@ -10,7 +10,7 @@ import { OrderModule } from './order/order.module';
 import { AppRepository } from './repository/app.repository/app.repository';
 import { DevLogger } from './logger/dev.logger/dev.logger';
 
-console.log('Здесь мы создаем ссылку');
+console.log('Здесь мы создаем ссылку ' + process.env.DATABASE_URL);
 
 const dataBaseUrl = new URL(process.env.DATABASE_URL);
 
