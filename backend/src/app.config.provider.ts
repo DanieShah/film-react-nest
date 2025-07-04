@@ -6,7 +6,9 @@ export const configProvider = {
   useValue: <AppConfig>{
     database: {
       driver: process.env.DATABASE_DRIVER || 'postgres',
-      url: process.env.DATABASE_URL || 'mongodb://localhost:27017/afisha',
+      url: process.env.DATABASE_URL || "postgres://db:5432/nest_project",
+      username: process.env.DATABASE_USERNAME,
+      password: process.env.DATABASE_PASSWORD,
     },
   },
 };
@@ -18,4 +20,6 @@ export interface AppConfig {
 export interface AppConfigDatabase {
   driver: string;
   url: string;
+  username: string;
+  password: string;
 }

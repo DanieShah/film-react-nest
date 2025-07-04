@@ -10,15 +10,17 @@ import { OrderModule } from './order/order.module';
 import { AppRepository } from './repository/app.repository/app.repository';
 import { DevLogger } from './logger/dev.logger/dev.logger';
 
+const dataBaseUrl = new URL(process.env.DATABASE_URL);
+
 console.log({
-  type: 'postgres',
-  host: process.env.DATABASE_HOST,
-  port: process.env.DATABASE_PORT,
-  username: process.env.DATABASE_USERNAME,
-  password: process.env.DATABASE_PASSWORD,
-  database: process.env.DATABASE_NAME,
-  url: process.env.DATABASE_URL,
-});
+      named: 'Proverka',
+      driver: 'postgres',
+      host: dataBaseUrl.host.split(':')[0],
+      port: Number(dataBaseUrl.port),
+      database: dataBaseUrl.pathname.substring(1),
+      username: process.env.DATABASE_USERNAME,
+      password: process.env.DATABASE_PASSWORD,
+})
 
 @Module({
   imports: [
@@ -32,15 +34,14 @@ console.log({
     }),
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: process.env.DATABASE_HOST,
-      port: Number(process.env.DATABASE_PORT),
+      host: dataBaseUrl.host.split(':')[0],
+      port: Number(dataBaseUrl.port),
+      database: dataBaseUrl.pathname.substring(1),
       username: process.env.DATABASE_USERNAME,
       password: process.env.DATABASE_PASSWORD,
-      database: process.env.DATABASE_NAME,
       entities: [Films, Schedules],
       migrations: [`${__dirname}/**/database/migrations/**/*{.ts,.js}`],
       synchronize: false,
-      url: process.env.DATABASE_URL
     }),
     TypeOrmModule.forFeature([Films, Schedules]),
     FilmsModule,

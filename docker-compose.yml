@@ -1,6 +1,8 @@
 services:
   frontend:
     image: 'ghcr.io/${OWNER}/film_frontend:latest'
+    build:
+      context: frontend
     environment:
       VITE_API_URL: /api/afisha
       VITE_CDN_URL: /content/afisha
@@ -9,13 +11,12 @@ services:
 
   backend:
     image: 'ghcr.io/${OWNER}/film_backend:latest'
+    build:
+      context: backend
     environment:
       DATABASE_DRIVER: ${DATABASE_DRIVER}
       DATABASE_USERNAME: ${DATABASE_USERNAME}
-      DATABASE_PORT: 5432
       DATABASE_PASSWORD: ${DATABASE_PASSWORD}
-      DATABASE_HOST: db
-      DATABASE_NAME: ${DATABASE_NAME}
       DATABASE_URL: ${DATABASE_URL}
       DEBUG: '*'
     ports:
@@ -27,6 +28,8 @@ services:
 
   server:
     image: 'ghcr.io/${OWNER}/film_server:latest'
+    build:
+      context: nginx
     ports:
       - '81:80'
     volumes:
