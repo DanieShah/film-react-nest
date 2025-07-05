@@ -12,8 +12,6 @@ import { DevLogger } from './logger/dev.logger/dev.logger';
 
 const dataBaseUrl = new URL(process.env.DATABASE_URL);
 
-console.log(dataBaseUrl);
-
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -26,7 +24,7 @@ console.log(dataBaseUrl);
     }),
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: dataBaseUrl.host.split(':')[0],
+      host: dataBaseUrl.hostname,
       port: Number(dataBaseUrl.port),
       database: dataBaseUrl.pathname.substring(1),
       username: process.env.DATABASE_USERNAME,
