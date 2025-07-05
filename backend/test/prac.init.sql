@@ -1,8 +1,5 @@
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
-create database nest_project
-    with owner postgres;
-
 create table public.films
 (
     id          uuid default uuid_generate_v4() not null
@@ -19,7 +16,7 @@ create table public.films
 );
 
 alter table public.films
-    owner to postgres;
+    owner to student;
 
 create table public.schedules
 (
@@ -38,6 +35,6 @@ create table public.schedules
 );
 
 alter table public.schedules
-    owner to postgres;
+    owner to student;
 
 
